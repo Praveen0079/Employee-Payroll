@@ -45,6 +45,11 @@ public class EmployeePayrollServiceImpl implements IEmployeePayrollService {
         Employee empData = this.getEmployeePayrollDataById(empId);
         empData.setName(empPayrollDTO.getName());
         empData.setSalary(empPayrollDTO.getSalary());
+        empData.setNote(empPayrollDTO.getNote());
+        empData.setDepartments(empPayrollDTO.getDepartments());
+        empData.setGender(empPayrollDTO.getGender());
+        empData.setProfilePic(empPayrollDTO.getProfilePic());
+
         employeeRepository.save(empData);
         return empData;
     }

@@ -4,16 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
-import java.util.*;
-
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import lombok.Data;
 import java.util.List;
 
 
-public @ToString @Data class EmployeeDTO {
+public @Data class EmployeeDTO {
 
     @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$",
                 message = "name shouldn't be null")
