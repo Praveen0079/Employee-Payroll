@@ -3,6 +3,7 @@ package com.bridgelabz.employeepayrollapp.services;
 
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeeDTO;
+import com.bridgelabz.employeepayrollapp.exceptions.EmployeePayrollException;
 import com.bridgelabz.employeepayrollapp.model.Employee;
 import com.bridgelabz.employeepayrollapp.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +31,14 @@ public class EmployeePayrollServiceImpl implements IEmployeePayrollService {
     }
 
     public Employee createEmployeePayrollData(EmployeeDTO empPayrollDTO) {
-        Employee employee = null;
+      try{  Employee employee = null;
         employee = new Employee(empPayrollDTO);
         employeeRepository.save(employee);
         return employee;
+    }
+      catch(Exception e){
+      throw new EmployeePayrollException(e.getMessage());
+      }
     }
 
     public Employee updateEmployeePayrollData(int empId, EmployeeDTO empPayrollDTO) {
